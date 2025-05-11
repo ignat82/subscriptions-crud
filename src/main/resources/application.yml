@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 3
+      connection-timeout: 2000
+    url: jdbc:postgresql://localhost:5432/subscriptions
+    username: subscriptions
+    password: subscriptions
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yaml
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.example: DEBUG
+    org.liquibase: DEBUG
+    liquibase: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+most-popular-subscriptions-request-limit: 3
