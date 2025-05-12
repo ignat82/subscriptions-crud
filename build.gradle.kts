@@ -3,13 +3,15 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dependency.management)
     jacoco
-    kotlin("jvm")
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
 java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
 }
 
 repositories {
@@ -110,8 +112,4 @@ tasks.withType<Test> {
     }
     finalizedBy(tasks.named("jacocoTestReport"))
     tasks.named("jacocoTestReport").get().finalizedBy(tasks.named("testCoverageReport"))
-}
-
-kotlin {
-    jvmToolchain(17)
 }
