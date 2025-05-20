@@ -4,6 +4,7 @@ dependencies {
     implementation(libs.spring.boot.starter.web)
     implementation(libs.spring.boot.starter.data.jdbc)
     implementation(libs.spring.boot.starter.validation)
+    implementation(libs.springdoc.openapi)
     implementation(libs.liquibase)
     implementation(libs.slf4j.api)
 

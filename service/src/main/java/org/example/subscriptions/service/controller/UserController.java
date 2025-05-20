@@ -2,6 +2,7 @@ package org.example.subscriptions.service.controller;
 
 import jakarta.validation.Valid;
 import java.util.UUID;
+import org.example.subscriptions.api.UserApi;
 import org.example.subscriptions.api.model.user.CreateUser;
 import org.example.subscriptions.api.model.user.UpdateUser;
 import org.example.subscriptions.api.model.user.UserResponse;
@@ -21,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/users")
-public class UserController {
+public class UserController implements UserApi {
 
     private final UserManager userManager;
 
@@ -31,6 +32,7 @@ public class UserController {
         this.userManager = userManager;
     }
 
+    @Override
     @PostMapping
     public ResponseEntity<UserResponse> createUser(
             @RequestBody @Valid CreateUser createUser
@@ -39,6 +41,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @Override
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUser(
             @PathVariable UUID id
@@ -49,6 +52,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @Override
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(
             @PathVariable UUID id,
@@ -59,6 +63,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable UUID id) {

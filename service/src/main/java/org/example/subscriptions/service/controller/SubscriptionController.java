@@ -3,6 +3,7 @@ package org.example.subscriptions.service.controller;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
+import org.example.subscriptions.api.SubscriptionApi;
 import org.example.subscriptions.api.model.subscription.CreateSubscription;
 import org.example.subscriptions.api.model.subscription.SubscriptionResponse;
 import org.example.subscriptions.api.model.subscription.SubscriptionStatistic;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-public class SubscriptionController {
+public class SubscriptionController implements SubscriptionApi {
 
     private final SubscriptionManager subscriptionManager;
 

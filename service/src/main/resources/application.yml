@@ -9,6 +9,14 @@ spring:
   liquibase:
     change-log: classpath:liquibase/changelog-master.yaml
     enabled: true
+springdoc:
+  packages-to-scan: org.example.subscriptions.service.controller
+  paths-to-match: /**
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
 
 logging:
   level:

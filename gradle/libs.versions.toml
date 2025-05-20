@@ -3,6 +3,7 @@ spring-boot = "3.2.0"
 spring-dependency-management = "1.1.4"
 spring-web = "6.2.6"
 spring-cloud = "4.1.0"
+springdoc-openapi = "2.5.0"
 slf4j = "2.0.7"
 junit-jupiter = "5.10.0"
 testcontainers = "1.21.0"
@@ -21,6 +22,7 @@ spring-boot-starter-validation = { module = "org.springframework.boot:spring-boo
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test", version.ref = "spring-boot" }
 spring-web = { module = "org.springframework:spring-web", version.ref = "spring-web" }
 spring-cloud-starter-openfeign = { module = "org.springframework.cloud:spring-cloud-starter-openfeign", version.ref = "spring-cloud" }
+springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc-openapi" }
 
 # DB
 postgresql = { module = "org.postgresql:postgresql" }

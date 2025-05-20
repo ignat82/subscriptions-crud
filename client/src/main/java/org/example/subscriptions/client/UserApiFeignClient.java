@@ -5,7 +5,8 @@ import feign.Param;
 import feign.RequestLine;
 import java.util.List;
 import java.util.UUID;
-import org.example.subscriptions.api.SubscriptionsServiceApi;
+import org.example.subscriptions.api.SubscriptionApi;
+import org.example.subscriptions.api.UserApi;
 import org.example.subscriptions.api.model.subscription.CreateSubscription;
 import org.example.subscriptions.api.model.subscription.SubscriptionResponse;
 import org.example.subscriptions.api.model.subscription.SubscriptionStatistic;
@@ -18,9 +19,9 @@ import org.springframework.http.ResponseEntity;
 /**
  * Feign интерфейс для взаимодействия с сервисом SubscriptionsService
  */
-@FeignClient("subscriptions-service")
+@FeignClient("subscriptions-service-user")
 @Headers("Content-Type: application/json")
-public interface SubscriptionsServiceApiFeignClient extends SubscriptionsServiceApi {
+public interface UserApiFeignClient extends UserApi {
     @RequestLine("POST /users")
     @Override
     ResponseEntity<UserResponse> createUser(
@@ -45,28 +46,4 @@ public interface SubscriptionsServiceApiFeignClient extends SubscriptionsService
     void deleteUser(
             @Param("id") UUID id
     );
-
-    @RequestLine("POST /users/{userId}/subscriptions")
-    @Override
-    ResponseEntity<SubscriptionResponse> createSubscription(
-            @Param UUID userId,
-            CreateSubscription createSubscription
-    );
-
-    @RequestLine("GET /users/{userId}/subscriptions")
-    @Override
-    ResponseEntity<List<SubscriptionResponse>> getUserSubscriptions(
-            @Param UUID userId
-    );
-
-    @RequestLine("DELETE /users/{userId}/subscriptions/{subscriptionId}")
-    @Override
-    void deleteSubscription(
-            @Param UUID userId,
-            UUID subscriptionId
-    );
-
-    @RequestLine("GET /subscriptions/top")
-    @Override
-    ResponseEntity<List<SubscriptionStatistic>> getTopSubscriptions();
 }

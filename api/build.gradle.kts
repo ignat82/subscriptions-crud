@@ -1,5 +1,5 @@
 
 dependencies {
-    compileOnly(libs.swagger.annotations.jakarta)
-    compileOnly(libs.spring.web)
+    implementation(libs.swagger.annotations.jakarta)
+    implementation(libs.spring.web)
 }
