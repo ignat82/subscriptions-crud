@@ -9,9 +9,6 @@ import org.example.subscriptions.api.SubscriptionApi;
 import org.example.subscriptions.api.model.subscription.CreateSubscription;
 import org.example.subscriptions.api.model.subscription.SubscriptionResponse;
 import org.example.subscriptions.api.model.subscription.SubscriptionStatistic;
-import org.example.subscriptions.api.model.user.CreateUser;
-import org.example.subscriptions.api.model.user.UpdateUser;
-import org.example.subscriptions.api.model.user.UserResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 

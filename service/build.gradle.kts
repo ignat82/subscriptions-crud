@@ -24,6 +24,14 @@ plugins {
     jacoco
 }
 
+configure<PublishingExtension> {
+    publications {
+        getByName<MavenPublication>("maven") {
+            artifact(tasks.getByName("bootJar"))
+        }
+    }
+}
+
 tasks.register("testCoverageReport") {
     dependsOn("test", "jacocoTestReport")
 
@@ -76,15 +84,6 @@ tasks.register("testCoverageReport") {
         println("Lines coverage percentage: ${linePercentage}%")
         println("Complexity: ${complexityMissed} missed of ${complexityTotal}. Coverage percentage: ${complexityPercentage}%")
     }
-}
-
-tasks.register<Copy>("copyJarToDocker") {
-    dependsOn("bootJar")
-    from(layout.buildDirectory.file("libs/${rootProject.name}-$version.jar")) {
-        include("*.jar")
-    }
-    into("$projectDir/docker")
-    rename { "app.jar" }
 }
 
 tasks.withType<JacocoReport> {
