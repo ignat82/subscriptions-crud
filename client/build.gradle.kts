@@ -1,7 +1,12 @@
+plugins {
+    `java-library`
+}
 
 dependencies {
-    implementation(project(":api"))
+    api(project(":api"))
+
     implementation(libs.spring.cloud.starter.openfeign)
-    implementation(libs.jackson.databind)
-    compileOnly(libs.spring.web)
+    implementation(libs.spring.boot.autoconfigure)
+
+    annotationProcessor(libs.spring.boot.configuration.processor)
 }

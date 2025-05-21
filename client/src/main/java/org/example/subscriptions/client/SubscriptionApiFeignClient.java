@@ -1,8 +1,6 @@
 package org.example.subscriptions.client;
 
 import feign.Headers;
-import feign.Param;
-import feign.RequestLine;
 import java.util.List;
 import java.util.UUID;
 import org.example.subscriptions.api.SubscriptionApi;
@@ -11,6 +9,10 @@ import org.example.subscriptions.api.model.subscription.SubscriptionResponse;
 import org.example.subscriptions.api.model.subscription.SubscriptionStatistic;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * Feign интерфейс для взаимодействия с сервисом SubscriptionsService
@@ -19,27 +21,27 @@ import org.springframework.http.ResponseEntity;
 @Headers("Content-Type: application/json")
 public interface SubscriptionApiFeignClient extends SubscriptionApi {
 
-    @RequestLine("POST /users/{userId}/subscriptions")
+    @PostMapping("/users/{userId}/subscriptions")
     @Override
     ResponseEntity<SubscriptionResponse> createSubscription(
-            @Param UUID userId,
+            @PathVariable UUID userId,
             CreateSubscription createSubscription
     );
 
-    @RequestLine("GET /users/{userId}/subscriptions")
+    @GetMapping("/users/{userId}/subscriptions")
     @Override
     ResponseEntity<List<SubscriptionResponse>> getUserSubscriptions(
-            @Param UUID userId
+            @PathVariable UUID userId
     );
 
-    @RequestLine("DELETE /users/{userId}/subscriptions/{subscriptionId}")
+    @DeleteMapping("/users/{userId}/subscriptions/{subscriptionId}")
     @Override
     void deleteSubscription(
-            @Param UUID userId,
+            @PathVariable UUID userId,
             UUID subscriptionId
     );
 
-    @RequestLine("GET /subscriptions/top")
+    @GetMapping("/subscriptions/top")
     @Override
     ResponseEntity<List<SubscriptionStatistic>> getTopSubscriptions();
 }

@@ -1,8 +1,6 @@
 package org.example.subscriptions.client;
 
 import feign.Headers;
-import feign.Param;
-import feign.RequestLine;
 import java.util.UUID;
 import org.example.subscriptions.api.UserApi;
 import org.example.subscriptions.api.model.user.CreateUser;
